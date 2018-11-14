@@ -1,6 +1,13 @@
 from flask import Flask, render_template, request
+from data import Students
 
 app=Flask(__name__)
+
+getStudents = Students()
+
+@app.route('/students')
+def stud():
+        return render_template('studentlist.html',myStudentList=getStudents)
 
 @app.route('/send',methods=['GET','POST'])
 def send():
